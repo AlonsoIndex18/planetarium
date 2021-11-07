@@ -19,7 +19,7 @@ const light = new THREE.PointLight(0xFFFFFF,1,100);
 
 renderer.setClearColor('#223124');
 renderer.setSize(window.innerWidth,window.innerHeight);
-document.body.appendChild(renderer,domElement);
+document.appendChild(renderer,domElement);
 const bgTexture = loader.load('resources/images/space_one.jpg');
 
 
@@ -53,10 +53,12 @@ const neptune = createSphere(3.88,neptuneMaterial);
 function App() {
   
   return (
-    <div>
+    <main>
+      <div>
+        <scene/>
 
-
-    </div>
+      </div>
+    </main>
   );
 }
 
