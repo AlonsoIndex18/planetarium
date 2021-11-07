@@ -20,7 +20,8 @@ const light = new THREE.PointLight(0xFFFFFF,1,100);
 renderer.setClearColor('#223124');
 renderer.setSize(window.innerWidth,window.innerHeight);
 document.body.appendChild(renderer.domElement);
-const bgTexture = loader.load('resources/images/space_One.jpg');
+import imagePath from './resources/images/space_One.jpg'
+const bgTexture = loader.load(imagePath);
 
 
 
