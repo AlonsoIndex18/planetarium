@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import './App.css';
 import * as THREE from 'three';
-
+import { TrackballControls} from 'three/examples/jsm/controls/TrackballControls.js'
 function createSphere(radius,material){
   const sphereGeometry = new THREE.SphereGeometry(radius);
   const sphereMesh = new THREE.Mesh(sphereGeometry,material);
@@ -14,12 +14,12 @@ function createSphere(radius,material){
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(80,window.innerWidth/window.innerHeight,0.6,1200);
 const loader = new THREE.TextureLoader()
-const renderer = new THREE.WebGLRenderer({antialias:true});
+const renderer = new THREE.WebGLRenderer({antialias: true});
 const light = new THREE.PointLight(0xFFFFFF,1,100);
 
 renderer.setClearColor('#223124');
 renderer.setSize(window.innerWidth,window.innerHeight);
-document.appendChild(renderer,domElement);
+document.appendChild(renderer.domElement);
 const bgTexture = loader.load('resources/images/space_one.jpg');
 
 
