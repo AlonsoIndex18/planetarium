@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import './App.css';
-import THREE from 'three';
+import * as THREE from 'three';
 
 function createSphere(radius,material){
   const sphereGeometry = new THREE.SphereGeometry(radius);
