@@ -1,56 +1,62 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import './App.css';
+import THREE from 'three';
+
+function createSphere(radius,material){
+  const sphereGeometry = new THREE.SphereGeometry(radius);
+  const sphereMesh = new THREE.Mesh(sphereGeometry,material);
+
+  return sphereMesh
+}
+// According  Sciencetrends data
+// Check that in sciencetrends.com/great-planets-order-size-distance-sun/
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(80,window.innerWidth/window.innerHeight,0.6,1200);
+const loader = new THREE.TextureLoader()
+const renderer = new THREE.WebGL1Renderer({antialias:true});
+const light = new THREE.PointLight(0xFFFFFF,1,100);
+
+renderer.setClearColor('#223124');
+renderer.setSize(window.innerWidth,window.innerHeight);
+document.body.appendChild(renderer,domElement);
+const bgTexture = loader.load('resources/images/space_one.jpg');
+
+
+
+scene.add(light);
+scene.background = bgTexture;
+
+const rendering = function(){
+  requestAnimationFrame(rendering);
+
+  renderer.render(scene,camera);
+}
+rendering();
+
+// Creating the planets and sun
+const sun = createSphere(1100,sunMaterial);
+// The sun is pending because of his massive volume
+const mercury = createSphere(3.8,mercuryMaterial);
+const venus = createSphere(9.5,venusMaterial);
+const earth = createSphere(10,earthMaterial);
+const mars = createSphere(5.3,marsMaterial);;
+const jupiter = createSphere(111.2,jupiterMaterial);;
+const saturn = createSphere(94.5,saturnMaterial);;
+const uranus = createSphere(4,uranusMaterial);;
+const neptune = createSphere(3.88,neptuneMaterial);
+
+
+
+
 
 function App() {
-  const [date, setDate] = useState(null);
-  useEffect(() => {
-    async function getDate() {
-      const res = await fetch('/api/date');
-      const newDate = await res.text();
-      setDate(newDate);
-    }
-    getDate();
-  }, []);
+  
   return (
-    <main>
-      <h1>Create React App + Go API</h1>
-      <h2>
-        Deployed with{' '}
-        <a
-          href="https://vercel.com/docs"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          Vercel
-        </a>
-        !
-      </h2>
-      <p>
-        <a
-          href="https://github.com/vercel/vercel/tree/main/examples/create-react-app"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          This project
-        </a>{' '}
-        was bootstrapped with{' '}
-        <a href="https://facebook.github.io/create-react-app/">
-          Create React App
-        </a>{' '}
-        and contains three directories, <code>/public</code> for static assets,{' '}
-        <code>/src</code> for components and content, and <code>/api</code>{' '}
-        which contains a serverless <a href="https://golang.org/">Go</a>{' '}
-        function. See{' '}
-        <a href="/api/date">
-          <code>api/date</code> for the Date API with Go
-        </a>
-        .
-      </p>
-      <br />
-      <h2>The date according to Go is:</h2>
-      <p>{date ? date : 'Loading date...'}</p>
-    </main>
+    <div>
+
+
+    </div>
   );
 }
 
