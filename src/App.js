@@ -20,7 +20,7 @@ const light = new THREE.PointLight(0xFFFFFF,1,100);
 renderer.setClearColor('#223124');
 renderer.setSize(window.innerWidth,window.innerHeight);
 document.body.appendChild(renderer.domElement);
-const bgTexture = loader.load('resources/images/space_one.jpg');
+const bgTexture = loader.load('resources/images/space_One.jpg');
 
 
 
@@ -34,17 +34,19 @@ const rendering = function(){
 }
 rendering();
 
-// Creating the planets and sun
-const sun = createSphere(1100,sunMaterial);
-// The sun is pending because of his massive volume
-const mercury = createSphere(3.8,mercuryMaterial);
-const venus = createSphere(9.5,venusMaterial);
-const earth = createSphere(10,earthMaterial);
-const mars = createSphere(5.3,marsMaterial);;
-const jupiter = createSphere(111.2,jupiterMaterial);;
-const saturn = createSphere(94.5,saturnMaterial);;
-const uranus = createSphere(4,uranusMaterial);;
-const neptune = createSphere(3.88,neptuneMaterial);
+
+
+// // Creating the planets and sun
+// const sun = createSphere(1100,sunMaterial);
+// // The sun is pending because of his massive volume
+// const mercury = createSphere(3.8,mercuryMaterial);
+// const venus = createSphere(9.5,venusMaterial);
+// const earth = createSphere(10,earthMaterial);
+// const mars = createSphere(5.3,marsMaterial);;
+// const jupiter = createSphere(111.2,jupiterMaterial);;
+// const saturn = createSphere(94.5,saturnMaterial);;
+// const uranus = createSphere(4,uranusMaterial);;
+// const neptune = createSphere(3.88,neptuneMaterial);
 
 
 
