@@ -30,8 +30,8 @@ scene.background = bgTexture;
 
 const rendering = function(){
   requestAnimationFrame(rendering);
-  bgTexture.offset.x = aspect > 1 ? (1-1 / 2)/2 :0;
-  bgTexture.repeat.x = aspect > 1 ? 1 / 2 : 1;
+  bgTexture.offset.x = 1;
+  bgTexture.repeat.x = 10;
 
 
   renderer.render(scene,camera);
