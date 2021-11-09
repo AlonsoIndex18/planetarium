@@ -15,7 +15,7 @@ function createPathForStrings(filename){
   const basePath = './resources/skybox/';
   const baseFileName = basePath + filename;
   const fileType = '.png';
-
+  console.log(baseFileName + '_' );
   const sides = ['1', '2', '3', '4', '5', '6'];
   const pathStings = sides.map(side => {
     return baseFileName + '_' + side + fileType;
@@ -31,8 +31,7 @@ function createMaterialArray(filename){
   });
   return materialArray;
 }
-// According  Sciencetrends data
-// Check that in sciencetrends.com/great-planets-order-size-distance-sun/
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(80,window.innerWidth/window.innerHeight,0.6,1200);
 const loader = new THREE.TextureLoader()
@@ -67,6 +66,8 @@ const rendering = function(){
 rendering();
 
 
+// According  Sciencetrends data
+// Check that in sciencetrends.com/great-planets-order-size-distance-sun/
 
 // // Creating the planets and sun
 // const sun = createSphere(1100,sunMaterial);
