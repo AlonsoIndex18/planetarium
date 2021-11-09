@@ -30,8 +30,8 @@ scene.background = bgTexture;
 
 const rendering = function(){
   requestAnimationFrame(rendering);
-  bgTexture.offset.x = 1;
-  bgTexture.repeat(10);
+  
+  bgTexture.repeat = new THREE.Vector2(10,10);
 
 
   renderer.render(scene,camera);
