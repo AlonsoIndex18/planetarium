@@ -3,11 +3,33 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import * as THREE from 'three';
 import { TrackballControls} from 'three/examples/jsm/controls/TrackballControls.js'
+
 function createSphere(radius,material){
   const sphereGeometry = new THREE.SphereGeometry(radius);
   const sphereMesh = new THREE.Mesh(sphereGeometry,material);
 
   return sphereMesh
+}
+
+function createPathForStrings(filename){
+  const basePath = './resources/skybox/';
+  const baseFileName = basePath + filename;
+  const fileType = '.png';
+
+  const sides = ['1', '2', '3', '4', '5', '6'];
+  const pathStings = sides.map(side => {
+    return baseFileName + '_' + side + fileType;
+  });
+  return pathStings;
+}
+
+function createMaterialArray(filename){
+  const skyBoxImagePaths = createPathForStrings(filename);
+  const materialArray = skyBoxImagePaths.map(image => {
+    const texture = new THREE.TextureLoader.load(image);
+    return new THREE.MeshBasicMaterial({map:texture, side:THREE.BackSide})
+  });
+  return materialArray;
 }
 // According  Sciencetrends data
 // Check that in sciencetrends.com/great-planets-order-size-distance-sun/
@@ -17,21 +39,27 @@ const loader = new THREE.TextureLoader()
 const renderer = new THREE.WebGLRenderer({antialias: true});
 const light = new THREE.PointLight(0xFFFFFF,1,100);
 
+
+const skyboxSpace  = new THREE.BoxGeometry(1000,1000,1000);
+const materialArray = createMaterialArray('space')
+const skybox = new THREE.Mesh(skyboxSpace,materialArray);
+scene.add(skybox);
+
 renderer.setClearColor('#223124');
 renderer.setSize(window.innerWidth,window.innerHeight);
 document.body.appendChild(renderer.domElement);
-import imagePath from './resources/images/space_One.jpg'
-const bgTexture = loader.load(imagePath);
+// import imagePath from './resources/images/space_One.jpg'
+// const bgTexture = loader.load(imagePath);
 
 
 
 scene.add(light);
-scene.background = bgTexture;
+
 
 const rendering = function(){
   requestAnimationFrame(rendering);
   
-  bgTexture.repeat = new THREE.Vector2(10,10);
+  
 
 
   renderer.render(scene,camera);

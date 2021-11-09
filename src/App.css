@@ -42,3 +42,8 @@ code:before,
 code:after {
   content: '\`';
 }
+body{
+  margin: 0;
+  height: 100vh;
+  background: #bdc3c7;
+}
