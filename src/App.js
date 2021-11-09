@@ -15,7 +15,6 @@ function createPathForStrings(filename){
   const basePath = './resources/skybox/';
   const baseFileName = basePath + filename;
   const fileType = '.png';
-  console.log(baseFileName + '_' );
   const sides = ['1', '2', '3', '4', '5', '6'];
   const pathStings = sides.map(side => {
     return baseFileName + '_' + side + fileType;
@@ -26,8 +25,8 @@ function createPathForStrings(filename){
 function createMaterialArray(filename){
   const skyBoxImagePaths = createPathForStrings(filename);
   const materialArray = skyBoxImagePaths.map(image => {
-    const texture = new THREE.TextureLoader.load(image);
-    return new THREE.MeshBasicMaterial({map:texture, side:THREE.BackSide})
+    let texture = new THREE.TextureLoader.load(image);
+    return new THREE.MeshBasicMaterial({map: texture, side: THREE.BackSide})
   });
   return materialArray;
 }
