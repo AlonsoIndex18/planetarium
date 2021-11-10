@@ -39,7 +39,7 @@ const camera = new THREE.PerspectiveCamera(80,window.innerWidth/window.innerHeig
 
 const renderer = new THREE.WebGLRenderer({antialias: true});
 const light = new THREE.PointLight(0xFFFFFF,1,100);
-
+light.position.set(5,5,5);
 
 const skyboxSpace  = new THREE.BoxGeometry(1000,1000,1000);
 const materialArray = createMaterialArray('space')
