@@ -29,9 +29,7 @@ function createMaterialArray(filename){
   const materialArray = skyBoxImagePaths.map(image => {
     
     
-    const textImage = require(""+image);
-    console.log(textImage);
-    let texture = loader.load(textImage);
+    let texture = loader.load(image);
     
     return new THREE.MeshBasicMaterial({map: texture, side: THREE.BackSide})
   });
@@ -45,7 +43,7 @@ const renderer = new THREE.WebGLRenderer({antialias: true});
 const light = new THREE.PointLight(0xFFFFFF,1,100);
 light.position.set(5,5,5);
 
-const skyboxSpace  = new THREE.BoxGeometry(1000,1000,1000);
+const skyboxSpace  = new THREE.BoxGeometry(2,2,2);
 const materialArray = createMaterialArray('space')
 console.log(materialArray);
 
