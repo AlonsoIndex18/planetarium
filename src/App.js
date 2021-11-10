@@ -38,7 +38,7 @@ function createMaterialArray(filename){
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(80,window.innerWidth/window.innerHeight,0.6,1200);
-
+camera.position.set(0,0,0);
 const renderer = new THREE.WebGLRenderer({antialias: true});
 const light = new THREE.PointLight(0xFFFFFF,1,100);
 light.position.set(5,5,5);
