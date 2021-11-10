@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import * as THREE from 'three';
 import { TrackballControls} from 'three/examples/jsm/controls/TrackballControls.js'
-
+import { AxesHelper } from 'three';
 const loader = new THREE.TextureLoader();
 
 function createSphere(radius,material){
@@ -65,8 +65,10 @@ window.addEventListener('resize', () =>{
 const controls = new TrackballControls(camera,renderer.domElement);
 controls.rotateSpeed = 4;
 controls.dynamicDampingFactor = 0.15;
-scene.add(light);
 
+scene.add(light);
+ const axes = new THREE.AxesHelper(10);
+ scene.add(axes);
 
 const rendering = function(){
   requestAnimationFrame(rendering);
