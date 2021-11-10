@@ -13,7 +13,7 @@ function createSphere(radius,material){
 }
 
 function createPathForStrings(filename){
-  const basePath = './resources/skybox/';
+  const basePath = 'resources/skybox/';
   const baseFileName = basePath + filename;
   const fileType = '.png';
   const sides = ['1', '2', '3', '4', '5', '6'];
@@ -26,9 +26,9 @@ function createPathForStrings(filename){
 function createMaterialArray(filename){
   const skyBoxImagePaths = createPathForStrings(filename);
   const materialArray = skyBoxImagePaths.map(image => {
-    import imgoPath from image;
+    
     console.log(image);
-    let texture = loader.load(imgoPath);
+    let texture = loader.load(image);
     
     return new THREE.MeshBasicMaterial({map: texture, side: THREE.BackSide})
   });
