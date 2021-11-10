@@ -45,15 +45,13 @@ light.position.set(5,5,5);
 
 const skyboxSpace  = new THREE.BoxGeometry(2,2,2);
 const materialArray = createMaterialArray('space')
-console.log(materialArray);
-
 
 renderer.setClearColor('#223124');
 renderer.setSize(window.innerWidth,window.innerHeight);
 document.body.appendChild(renderer.domElement);
 import imagePath from './resources/images/space_One.jpg'
 const bgTexture = loader.load(imagePath);
-const skybox = new THREE.Mesh(skyboxSpace,bgTexture);
+const skybox = new THREE.Mesh(skyboxSpace);
 scene.add(skybox);
 
 window.addEventListener('resize', () =>{
