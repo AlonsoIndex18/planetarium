@@ -37,8 +37,9 @@ function createMaterialArray(filename){
 }
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(80,window.innerWidth/window.innerHeight,0.6,1200);
-camera.position.set(0,0,0);
+const camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.6,1200);
+camera.position.z = 5;
+
 const renderer = new THREE.WebGLRenderer({antialias: true});
 const light = new THREE.PointLight(0xFFFFFF,1,100);
 light.position.set(5,5,5);
@@ -65,18 +66,21 @@ controls.rotateSpeed = 4;
 controls.dynamicDampingFactor = 0.15;
 
 scene.add(light);
- const axes = new THREE.AxesHelper(10);
- scene.add(axes);
+const axes = new THREE.AxesHelper(10);
+scene.add(axes);
 
+
+rendering();
 const rendering = function(){
   requestAnimationFrame(rendering);
   
   
 
-
+  
   renderer.render(scene,camera);
+  controls.update();
 }
-rendering();
+
 
 
 // According  Sciencetrends data
