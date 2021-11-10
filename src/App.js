@@ -14,7 +14,7 @@ function createSphere(radius,material){
 }
 
 function createPathForStrings(filename){
-  const basePath = 'https://github.com/AlonsoIndex18/planetarium/blob/main/src/resources/skybox/';
+  const basePath = 'https://raw.githubusercontent.com/AlonsoIndex18/planetarium/main/src/resources/skybox/';
   const baseFileName = basePath + filename;
   const fileType = '.png';
   const sides = ['1', '2', '3', '4', '5', '6'];
