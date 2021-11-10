@@ -24,9 +24,10 @@ function createPathForStrings(filename){
 
 function createMaterialArray(filename){
   const skyBoxImagePaths = createPathForStrings(filename);
+  console.log(skyBoxImagePaths);
   const materialArray = skyBoxImagePaths.map(image => {
     let texture = new THREE.TextureLoader.load(image);
-    console.log(texture);
+    
     return new THREE.MeshBasicMaterial({map: texture, side: THREE.BackSide})
   });
   return materialArray;
