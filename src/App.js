@@ -53,7 +53,15 @@ document.body.appendChild(renderer.domElement);
 // const bgTexture = loader.load(imagePath);
 
 
+window.addEventListener('resize', () =>{
+  renderer.setSize(window.innerWidth,window.innerHeight);
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+})
 
+const controls = new TrackballControls(camera,renderer.domElement);
+controls.rotateSpeed = 4;
+controls.dynamicDampingFactor = 0.15;
 scene.add(light);
 
 
