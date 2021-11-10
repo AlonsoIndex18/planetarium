@@ -17,7 +17,7 @@ function createPathForStrings(filename){
   const fileType = '.png';
   const sides = ['1', '2', '3', '4', '5', '6'];
   const pathStings = sides.map(side => {
-    console.log(side);
+    console.log(baseFileName + '_' + side + fileType);
     return baseFileName + '_' + side + fileType;
   });
   return pathStings;
