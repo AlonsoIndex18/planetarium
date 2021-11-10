@@ -4,7 +4,7 @@ import './App.css';
 import * as THREE from 'three';
 import { TrackballControls} from 'three/examples/jsm/controls/TrackballControls.js'
 import { AxesHelper } from 'three';
-const loader = new THREE.TextureLoader();
+
 
 function createSphere(radius,material){
   const sphereGeometry = new THREE.SphereGeometry(radius);
@@ -14,7 +14,7 @@ function createSphere(radius,material){
 }
 
 function createPathForStrings(filename){
-  const basePath = './resources/skybox/';
+  const basePath = 'https://github.com/AlonsoIndex18/planetarium/blob/main/src/resources/skybox/';
   const baseFileName = basePath + filename;
   const fileType = '.png';
   const sides = ['1', '2', '3', '4', '5', '6'];
@@ -27,8 +27,7 @@ function createPathForStrings(filename){
 function createMaterialArray(filename){
   const skyBoxImagePaths = createPathForStrings(filename);
   const materialArray = skyBoxImagePaths.map(image => {
-    
-    
+    const loader = new THREE.TextureLoader();
     let texture = loader.load(image);
     
     return new THREE.MeshBasicMaterial({map: texture, side: THREE.BackSide})
@@ -44,7 +43,7 @@ const renderer = new THREE.WebGLRenderer({antialias: true});
 const light = new THREE.PointLight(0xFFFFFF,1,100);
 light.position.set(5,5,5);
 
-const skyboxSpace  = new THREE.BoxGeometry(1000,1000,1000);
+const skyboxSpace  = new THREE.BoxGeometry(10000,10000,10000);
 const materialArray = createMaterialArray('space')
 
 renderer.setClearColor('#223124');
