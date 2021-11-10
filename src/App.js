@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import * as THREE from 'three';
 import { TrackballControls} from 'three/examples/jsm/controls/TrackballControls.js'
-import imagePath from './resources/skybox'
+
 const loader = new THREE.TextureLoader();
 
 function createSphere(radius,material){
@@ -14,7 +14,7 @@ function createSphere(radius,material){
 }
 
 function createPathForStrings(filename){
-  const basePath = imagePath;
+  const basePath = 'resources/skybox/';
   const baseFileName = basePath + filename;
   const fileType = '.png';
   const sides = ['1', '2', '3', '4', '5', '6'];
@@ -29,7 +29,8 @@ function createMaterialArray(filename){
   const materialArray = skyBoxImagePaths.map(image => {
     
     console.log(image);
-    let texture = loader.load(image);
+    const textImage = require(image);
+    let texture = loader.load(textImage);
     
     return new THREE.MeshBasicMaterial({map: texture, side: THREE.BackSide})
   });
