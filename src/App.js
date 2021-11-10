@@ -29,7 +29,7 @@ function createMaterialArray(filename){
   const materialArray = skyBoxImagePaths.map(image => {
     
     console.log(image);
-    const textImage = require(image);
+    const textImage = require(""+image);
     let texture = loader.load(textImage);
     
     return new THREE.MeshBasicMaterial({map: texture, side: THREE.BackSide})
