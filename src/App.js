@@ -44,7 +44,7 @@ light.position.set(5,5,5);
 
 const skyboxSpace  = new THREE.BoxGeometry(1000,1000,1000);
 const materialArray = createMaterialArray('space')
-const skybox = new THREE.Mesh(skyboxSpace,materialArray);
+const skybox = new THREE.Mesh(skyboxSpace,0xFFFFFF);
 scene.add(skybox);
 
 renderer.setClearColor('#223124');
