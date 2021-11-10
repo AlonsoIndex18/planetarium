@@ -70,7 +70,7 @@ const axes = new THREE.AxesHelper(10);
 scene.add(axes);
 
 
-rendering();
+
 const rendering = function(){
   requestAnimationFrame(rendering);
   
@@ -81,7 +81,7 @@ const rendering = function(){
   controls.update();
 }
 
-
+rendering();
 
 // According  Sciencetrends data
 // Check that in sciencetrends.com/great-planets-order-size-distance-sun/
