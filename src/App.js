@@ -50,9 +50,9 @@ const materialArray = createMaterialArray('space')
 renderer.setClearColor('#223124');
 renderer.setSize(window.innerWidth,window.innerHeight);
 document.body.appendChild(renderer.domElement);
-import imagePath from './resources/images/space_One.jpg'
-const bgTexture = loader.load(imagePath);
-const skybox = new THREE.Mesh(skyboxSpace,bgTexture);
+// import imagePath from './resources/images/space_One.jpg'
+// const bgTexture = loader.load(imagePath);
+const skybox = new THREE.Mesh(skyboxSpace,materialArray);
 scene.add(skybox);
 
 window.addEventListener('resize', () =>{
