@@ -4,6 +4,7 @@ import './App.css';
 import * as THREE from 'three';
 import { TrackballControls} from 'three/examples/jsm/controls/TrackballControls.js'
 
+const loader = new THREE.TextureLoader()
 function createSphere(radius,material){
   const sphereGeometry = new THREE.SphereGeometry(radius);
   const sphereMesh = new THREE.Mesh(sphereGeometry,material);
@@ -26,7 +27,7 @@ function createMaterialArray(filename){
   const skyBoxImagePaths = createPathForStrings(filename);
   const materialArray = skyBoxImagePaths.map(image => {
     console.log(image);
-    let texture = new THREE.TextureLoader.load(image);
+    let texture = loader.load(image);
     
     return new THREE.MeshBasicMaterial({map: texture, side: THREE.BackSide})
   });
@@ -35,7 +36,7 @@ function createMaterialArray(filename){
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(80,window.innerWidth/window.innerHeight,0.6,1200);
-const loader = new THREE.TextureLoader()
+
 const renderer = new THREE.WebGLRenderer({antialias: true});
 const light = new THREE.PointLight(0xFFFFFF,1,100);
 
