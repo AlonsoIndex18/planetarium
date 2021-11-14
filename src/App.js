@@ -38,13 +38,14 @@ function createMaterialArray(filename){
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.6,1200);
+camera.position.z = -5;
 //camera.position.set(1200,-250,2000);
 
 const renderer = new THREE.WebGLRenderer({antialias: true});
 const light = new THREE.PointLight(0xFFFFFF,1,100);
 light.position.set(5,5,5);
 
-const skyboxSpace  = new THREE.BoxGeometry(10000,10000,10000);
+const skyboxSpace  = new THREE.BoxGeometry(1,1,1);
 const materialArray = createMaterialArray('space')
 
 renderer.setClearColor('#223124');
