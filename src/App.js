@@ -8,8 +8,9 @@ import { AxesHelper } from 'three';
 const loader = new THREE.TextureLoader();
 
 function createSphere(radius,material){
-  const sphereGeometry = new THREE.SphereGeometry(radius);
-  const sphereMesh = new THREE.Mesh(sphereGeometry,material);
+  material = new THREE.MeshLambertMaterial(material);
+  const sphereGeometry = new THREE.SphereGeometry(radius,material);
+  const sphereMesh = new THREE.Mesh(sphereGeometry,);
 
   return sphereMesh
 }
@@ -54,7 +55,7 @@ document.body.appendChild(renderer.domElement);
 // import imagePath from './resources/images/space_One.jpg'
 // const bgTexture = loader.load(imagePath);
 const skybox = new THREE.Mesh(skyboxSpace,materialArray);
-scene.add(skybox);
+//scene.add(skybox);
 
 window.addEventListener('resize', () =>{
   renderer.setSize(window.innerWidth,window.innerHeight);
