@@ -85,9 +85,11 @@ rendering();
 
 // According  Sciencetrends data
 // Check that in sciencetrends.com/great-planets-order-size-distance-sun/
+// Using textures and materials from https://www.solarsystemscope.com/
 const sunMaterial = loader.load('https://raw.githubusercontent.com/AlonsoIndex18/planetarium/main/src/resources/images/sun.jpg'); 
 // // Creating the planets and sun
 const sun = createSphere(10,sunMaterial);
+scene.add(sun);
 // const sun = createSphere(1100,sunMaterial);
 // // The sun is pending because of his massive volume
 // const mercury = createSphere(3.8,mercuryMaterial);
