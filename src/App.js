@@ -8,7 +8,6 @@ import { AxesHelper } from 'three';
 const loader = new THREE.TextureLoader();
 
 function createSphere(radius,material){
-  material = new THREE.MeshLambertMaterial(material);
   const sphereGeometry = new THREE.SphereGeometry(radius,material);
   const sphereMesh = new THREE.Mesh(sphereGeometry,);
 
