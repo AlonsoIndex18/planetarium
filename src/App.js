@@ -43,7 +43,7 @@ const renderer = new THREE.WebGLRenderer({antialias: true});
 const light = new THREE.PointLight(0xFFFFFF,1,100);
 light.position.set(5,5,5);
 
-const skyboxSpace  = new THREE.BoxGeometry(5000,5000,5000);
+const skyboxSpace  = new THREE.BoxGeometry(10000,10000,10000);
 const materialArray = createMaterialArray('space')
 
 renderer.setClearColor('#223124');
