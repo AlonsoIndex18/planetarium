@@ -85,7 +85,7 @@ rendering();
 
 // According  Sciencetrends data
 // Check that in sciencetrends.com/great-planets-order-size-distance-sun/
-const sunmaterial = loader.load('https://raw.githubusercontent.com/AlonsoIndex18/planetarium/main/src/resources/images/sun.jpg'); 
+const sunMaterial = loader.load('https://raw.githubusercontent.com/AlonsoIndex18/planetarium/main/src/resources/images/sun.jpg'); 
 // // Creating the planets and sun
 const sun = createSphere(10,sunMaterial);
 // const sun = createSphere(1100,sunMaterial);
