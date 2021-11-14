@@ -5,6 +5,7 @@ import * as THREE from 'three';
 import { TrackballControls} from 'three/examples/jsm/controls/TrackballControls.js'
 import { AxesHelper } from 'three';
 
+const loader = new THREE.TextureLoader();
 
 function createSphere(radius,material){
   const sphereGeometry = new THREE.SphereGeometry(radius);
@@ -27,7 +28,7 @@ function createPathForStrings(filename){
 function createMaterialArray(filename){
   const skyBoxImagePaths = createPathForStrings(filename);
   const materialArray = skyBoxImagePaths.map(image => {
-    const loader = new THREE.TextureLoader();
+    
     let texture = loader.load(image);
     
     return new THREE.MeshBasicMaterial({map: texture, side: THREE.BackSide})
@@ -37,7 +38,7 @@ function createMaterialArray(filename){
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.6,1200);
-camera.position.set(1200,-250,2000);
+//camera.position.set(1200,-250,2000);
 
 const renderer = new THREE.WebGLRenderer({antialias: true});
 const light = new THREE.PointLight(0xFFFFFF,1,100);
@@ -84,8 +85,9 @@ rendering();
 
 // According  Sciencetrends data
 // Check that in sciencetrends.com/great-planets-order-size-distance-sun/
-
+const sunmaterial = loader.load('https://raw.githubusercontent.com/AlonsoIndex18/planetarium/main/src/resources/images/sun.jpg'); 
 // // Creating the planets and sun
+const sun = createSphere(10,sunMaterial);
 // const sun = createSphere(1100,sunMaterial);
 // // The sun is pending because of his massive volume
 // const mercury = createSphere(3.8,mercuryMaterial);
