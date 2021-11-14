@@ -72,17 +72,7 @@ scene.add(axes);
 
 
 
-const rendering = function(){
-  requestAnimationFrame(rendering);
-  
-  
 
-  
-  renderer.render(scene,camera);
-  controls.update();
-}
-
-rendering();
 
 // According  Sciencetrends data
 // Check that in sciencetrends.com/great-planets-order-size-distance-sun/
@@ -91,6 +81,7 @@ const sunMaterial = loader.load('https://raw.githubusercontent.com/AlonsoIndex18
 // // Creating the planets and sun
 const sun = createSphere(10,sunMaterial);
 scene.add(sun);
+sun.position.set(0,0,0);
 // const sun = createSphere(1100,sunMaterial);
 // // The sun is pending because of his massive volume
 // const mercury = createSphere(3.8,mercuryMaterial);
@@ -102,7 +93,17 @@ scene.add(sun);
 // const uranus = createSphere(4,uranusMaterial);;
 // const neptune = createSphere(3.88,neptuneMaterial);
 
+const rendering = function(){
+  requestAnimationFrame(rendering);
+  
+  
+  camera.lookAt(sun.position);
+  
+  renderer.render(scene,camera);
+  controls.update();
+}
 
+rendering();
 
 
 
