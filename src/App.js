@@ -96,7 +96,8 @@ sun.position.set(0,0,0);
 
 const rendering = function(){
   requestAnimationFrame(rendering);
-  
+  console.log(sun.position);
+  console.log(sun.material);
   
   camera.lookAt(sun.position);
   
