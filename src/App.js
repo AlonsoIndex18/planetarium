@@ -6,10 +6,11 @@ import { TrackballControls} from 'three/examples/jsm/controls/TrackballControls.
 import { AxesHelper } from 'three';
 
 const loader = new THREE.TextureLoader();
-
+const arraySphere = []; 
 function createSphere(radius,material){
-  const sphereGeometry = new THREE.SphereGeometry(radius,material);
-  const sphereMesh = new THREE.Mesh(sphereGeometry,);
+  const sphereGeometry = new THREE.SphereGeometry(radius);
+  const sphereMat = new THREE.MeshBasicMaterial({map : material});
+  const sphereMesh = new THREE.Mesh(sphereGeometry,sphereMat);
 
   return sphereMesh
 }
@@ -78,10 +79,41 @@ scene.add(axes);
 // Check that in sciencetrends.com/great-planets-order-size-distance-sun/
 // Using textures and materials from https://www.solarsystemscope.com/
 const sunMaterial = loader.load('https://raw.githubusercontent.com/AlonsoIndex18/planetarium/main/src/resources/images/sun.jpg'); 
+const mercuryMaterial = loader.load('https://raw.githubusercontent.com/AlonsoIndex18/planetarium/main/src/resources/images/mercury.jpg'); 
+const venusMaterial = loader.load('https://raw.githubusercontent.com/AlonsoIndex18/planetarium/main/src/resources/images/venus.jpg'); 
+const earthMaterial = loader.load('https://raw.githubusercontent.com/AlonsoIndex18/planetarium/main/src/resources/images/earth.jpg'); 
+const marsMaterial = loader.load('https://raw.githubusercontent.com/AlonsoIndex18/planetarium/main/src/resources/images/mars.jpg'); 
+const jupiterMaterial = loader.load('https://raw.githubusercontent.com/AlonsoIndex18/planetarium/main/src/resources/images/jupiter.jpg'); 
+const saturnMaterial = loader.load('https://raw.githubusercontent.com/AlonsoIndex18/planetarium/main/src/resources/images/saturn.jpg'); 
+const uranusMaterial = loader.load('https://raw.githubusercontent.com/AlonsoIndex18/planetarium/main/src/resources/images/uranus.jpg'); 
+const neptuneMaterial = loader.load('https://raw.githubusercontent.com/AlonsoIndex18/planetarium/main/src/resources/images/neptune.jpg'); 
 // // Creating the planets and sun
 const sun = createSphere(10,sunMaterial);
-scene.add(sun);
-sun.position.set(0,0,0);
+const mercury = createSphere(1,mercuryMaterial);
+const venus = createSphere(3,venusMaterial);
+const earth = createSphere(3,earthMaterial);
+const mars = createSphere(2.5,marsMaterial);;
+const jupiter = createSphere(8,jupiterMaterial);;
+const saturn = createSphere(7,saturnMaterial);;
+const uranus = createSphere(5.5,uranusMaterial);;
+const neptune = createSphere(6,neptuneMaterial);
+
+arraySphere.push(sun);
+arraySphere.push(mercury);
+arraySphere.push(venus);
+arraySphere.push(earth);
+arraySphere.push(mars);
+arraySphere.push(jupiter);
+arraySphere.push(saturn);
+arraySphere.push(uranus);
+arraySphere.push(neptune);
+
+for (let index = 0; index < arraySphere.length; index++) {
+  scene.add(arraySphere[index]);
+  arraySphere[index].position.set(20*(index+1),0,0)  
+}
+
+
 // const sun = createSphere(1100,sunMaterial);
 // // The sun is pending because of his massive volume
 // const mercury = createSphere(3.8,mercuryMaterial);
@@ -95,11 +127,9 @@ sun.position.set(0,0,0);
 
 const rendering = function(){
   requestAnimationFrame(rendering);
-  console.log(sun.position);
-  console.log(sun.material);
-  
-  camera.lookAt(sun.position);
-  
+  arraySphere.forEach(element => {
+    element.rotation.y += 0.05;
+  });
   renderer.render(scene,camera);
   controls.update();
 }
